@@ -8,7 +8,7 @@ const questions = [
       "Ivysaur",
       "Charmeleon",
       "Venusaur",
-      "Wartortle",
+      "Wartortle"
     ],
   ),
   QuizQuestion(
