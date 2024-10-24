@@ -4,9 +4,14 @@ import 'package:quiz_app/data/questions.dart';
 import 'package:quiz_app/question_summary.dart';
 
 class ResultsScreen extends StatelessWidget {
-  const ResultsScreen({super.key, required this.chosenAnswers});
+  const ResultsScreen({
+    super.key,
+    required this.chosenAnswers,
+    required this.restartQuiz,
+  });
 
   final List<String> chosenAnswers;
+  final VoidCallback restartQuiz;
 
   List<Map<String, Object>> getSummaryData() {
     List<Map<String, Object>> summary = [];
@@ -41,13 +46,24 @@ class ResultsScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              'You answered $numCorrectQuestions out of $numTotalQuestions questions Correctly',
-              textAlign: TextAlign.center,
-              style: GoogleFonts.assistant(
-                fontSize: 24,
-                color: Colors.white,
-                fontWeight: FontWeight.w600,
+            Container(
+              padding: const EdgeInsets.all(10),
+              margin: const EdgeInsets.only(top: 5, bottom: 5),
+              decoration: BoxDecoration(
+                color: const Color.fromARGB(255, 255, 138, 226),
+                borderRadius: BorderRadius.circular(20),
+                border: Border.all(
+                  color: const Color.fromARGB(255, 29, 29, 29),
+                ),
+              ),
+              child: Text(
+                'You answered $numCorrectQuestions out of $numTotalQuestions questions correctly',
+                textAlign: TextAlign.center,
+                style: GoogleFonts.assistant(
+                  fontSize: 24,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             const SizedBox(
@@ -58,16 +74,14 @@ class ResultsScreen extends StatelessWidget {
               height: 30,
             ),
             TextButton(
-              onPressed: () {},
-              style: ButtonStyle(
-                side: WidgetStateProperty.all(
-                  const BorderSide(
-                    color: Colors.white,
-                  ),
+              onPressed: restartQuiz,
+              style: TextButton.styleFrom(
+                backgroundColor: const Color.fromARGB(255, 255, 138, 226),
+                side: const BorderSide(
+                  color: Color.fromARGB(255, 29, 29, 29),
                 ),
-                padding: WidgetStateProperty.all(
-                  const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
-                ),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
               ),
               child: Text(
                 'Restart Quiz',

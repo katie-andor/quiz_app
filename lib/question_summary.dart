@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -7,13 +6,13 @@ class QuestionsSummary extends StatelessWidget {
 
   final List<Map<String, Object>> summaryData;
 
-Color checkIfCorrect(Map<String, Object> data){
-    if(data['user_answer'] == data['correct_answer']){
+  Color checkIfCorrect(Map<String, Object> data) {
+    if (data['user_answer'] == data['correct_answer']) {
       return const Color.fromARGB(255, 77, 255, 83);
-    }else{
+    } else {
       return const Color.fromARGB(255, 255, 71, 58);
     }
-}
+  }
 
   @override
   Widget build(context) {
@@ -33,14 +32,18 @@ Color checkIfCorrect(Map<String, Object> data){
                       height: 40,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: checkIfCorrect(data)
+                        color: checkIfCorrect(data),
+                        border: Border.all(
+                          color: const Color.fromARGB(255, 29, 29, 29),
+                        ),
                       ),
                       alignment: Alignment.center,
                       child: Text(
                         ((data['question_index'] as int) + 1).toString(),
-                        style: const TextStyle(
+                        style: GoogleFonts.assistant(
                           color: Colors.white,
                           fontSize: 24,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
@@ -49,27 +52,60 @@ Color checkIfCorrect(Map<String, Object> data){
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          data['question'] as String,
-                          style: GoogleFonts.assistant(
-                            color: Colors.white,
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold
+                        Container(
+                          padding: const EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: const Color.fromARGB(255, 255, 138, 226),
+                            borderRadius: BorderRadius.circular(20),
+                            border: Border.all(
+                              color: const Color.fromARGB(255, 29, 29, 29),
+                            ),
+                          ),
+                          child: Text(
+                            data['question'] as String,
+                            style: GoogleFonts.assistant(
+                                color: Colors.white,
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold),
                           ),
                         ),
                         const SizedBox(height: 5),
-                        Text(
-                          'You chose: ${data['user_answer']}',
-                          style: GoogleFonts.assistant(
-                            color: const Color.fromARGB(255, 214, 125, 255),
-                            fontSize: 20,
+                        Container(
+                          padding: const EdgeInsets.all(10),
+                          margin: const EdgeInsets.only(top: 5, bottom: 5),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(20),
+                            border: Border.all(
+                              color: const Color.fromARGB(255, 29, 29, 29),
+                            ),
+                          ),
+                          child: Text(
+                            'You chose: ${data['user_answer']}',
+                            style: GoogleFonts.assistant(
+                              color: const Color.fromARGB(255, 255, 138, 226),
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
-                        Text(
-                          'The answer was: ${data['correct_answer']}',
-                          style: GoogleFonts.assistant(
-                            color: const Color.fromARGB(255, 136, 226, 247),
-                            fontSize: 20,
+                        Container(
+                          padding: const EdgeInsets.all(10),
+                          margin: const EdgeInsets.only(top: 5, bottom: 5),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(20),
+                            border: Border.all(
+                              color: const Color.fromARGB(255, 29, 29, 29),
+                            ),
+                          ),
+                          child: Text(
+                            'The answer was: ${data['correct_answer']}',
+                            style: GoogleFonts.assistant(
+                              color: const Color.fromARGB(255, 127, 255, 253),
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ],

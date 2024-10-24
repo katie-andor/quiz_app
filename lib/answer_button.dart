@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
 class AnswerButton extends StatelessWidget{
@@ -16,23 +17,33 @@ class AnswerButton extends StatelessWidget{
   @override
   Widget build(context){
     return 
-    ElevatedButton(
-      onPressed: onTap,
-      style: ElevatedButton.styleFrom(
-        padding: const EdgeInsets.symmetric(
-          vertical:10,
-          horizontal: 40,
-        ),
-        backgroundColor: const Color.fromARGB(255, 33, 1, 95),
-        foregroundColor: Colors.white,
-        // shape:const BeveledRectangleBorder(
-
-        // ),
-      ),
+    Container(
+      margin: const EdgeInsets.all(5),
+      child: ElevatedButton(
+        onPressed: onTap,
+        style: ElevatedButton.styleFrom(
+          side: const BorderSide(
+            color: Color.fromARGB(255, 29, 29, 29),
+          ),
+          padding: const EdgeInsets.symmetric(
+            vertical:10,
+            horizontal: 40,
+          ),
+          backgroundColor: const Color.fromARGB(255, 255, 138, 226),
+          foregroundColor: Colors.white,
+          // shape:const BeveledRectangleBorder(
       
-      child: Text(
-        answerText,
-        textAlign: TextAlign.center,
+          // ),
+        ),
+        
+        child: Text(
+          answerText,
+          textAlign: TextAlign.center,
+          style: GoogleFonts.assistant(
+            fontSize: 17,
+            fontWeight: FontWeight.bold,
+          ) 
+        ),
       ),
     );
   }

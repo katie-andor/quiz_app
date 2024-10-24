@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class StartScreen extends StatelessWidget {
   const StartScreen(this.startQuiz, {super.key});
@@ -11,22 +12,42 @@ class StartScreen extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Opacity(
-            opacity: 0.5,
+          Container(
+            width: 320,
+            height: 320,
+            padding: const EdgeInsets.all(60),
+            decoration: BoxDecoration(
+              color: const Color.fromARGB(255, 255, 138, 226),
+              borderRadius: BorderRadius.circular(160),
+              border: Border.all(
+                color: const Color.fromARGB(255, 29, 29, 29),
+                )
+            ),
             child: Image.asset(
               'assets/assets/images/quiz-logo.png',
               width: 300,
-              color: const Color.fromARGB(170, 255, 255, 255),
             ),
           ),
           const SizedBox(
             height: 80,
           ),
-          const Text(
-            "Try your luck on our quiz",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 24,
+          Container(
+            padding: const EdgeInsets.all(15),
+            decoration: BoxDecoration(
+              color: const Color.fromARGB(255, 255, 138, 226),
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(
+                color: const Color.fromARGB(255, 29, 29, 29),
+              ),
+            ),
+            child: Text(
+              "Try your luck on our quiz",
+              style: GoogleFonts.assistant(
+                color: const Color.fromARGB(255, 255, 255, 255),
+                fontSize: 24,
+                backgroundColor: const Color.fromARGB(255, 255, 138, 226),
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
           const SizedBox(
@@ -39,11 +60,12 @@ class StartScreen extends StatelessWidget {
             ),
             style: OutlinedButton.styleFrom(
               foregroundColor: Colors.white,
+              backgroundColor: const Color.fromARGB(255, 255, 138, 226),
             ),
             onPressed: startQuiz,
-            label: const Text(
+            label: Text(
               "Start Quiz",
-              style: TextStyle(
+              style: GoogleFonts.assistant(
                 fontSize: 24,
               ),
             ),

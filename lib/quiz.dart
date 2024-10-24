@@ -31,17 +31,25 @@ class _QuizState extends State<Quiz> {
     });
   }
 
-  void chooseAnswer(String answer) {
-    selectedAnswers.add(answer);
-    if (selectedAnswers.length == questions.length) {
-      setState(() {
-        activeScreen = ResultsScreen(
-          chosenAnswers: selectedAnswers,
-        );
-      });
-    }
+ void chooseAnswer(String answer) {
+  selectedAnswers.add(answer);
+  if (selectedAnswers.length == questions.length) {
+    setState(() {
+      activeScreen = ResultsScreen(
+        chosenAnswers: selectedAnswers,
+        restartQuiz: startOver, 
+      );
+    });
   }
+}
 
+
+void startOver(){
+  setState(() {
+    selectedAnswers = [];
+    activeScreen = StartScreen(switchScreen);
+  });
+}
 
   @override
   Widget build(context) {
@@ -49,12 +57,16 @@ class _QuizState extends State<Quiz> {
       home: Scaffold(
         body: Container(
           decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Color.fromARGB(255, 78, 13, 151),
-                Color.fromARGB(255, 183, 17, 195),
-              ],
-            ),
+            // gradient: LinearGradient(
+            //   colors: [
+            //     Color.fromARGB(255, 192, 28, 66),
+            //     Color.fromARGB(255, 183, 17, 195),
+            //   ],
+            // ),
+            image: DecorationImage(
+              image: AssetImage('assets/assets/images/background.jpg_large'),
+              fit: BoxFit.cover
+            )
           ),
           child: activeScreen,
         ),
