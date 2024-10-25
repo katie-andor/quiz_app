@@ -102,7 +102,7 @@ class QuestionsSummary extends StatelessWidget {
                           child: Text(
                             'The answer was: ${data['correct_answer']}',
                             style: GoogleFonts.assistant(
-                              color: const Color.fromARGB(255, 127, 255, 253),
+                              color: const Color.fromARGB(255, 61, 193, 190),
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
                             ),
